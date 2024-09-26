@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <title>Форма регистрации клиента</title>
+    <title>Telegram WebApp User ID</title>
     <script>
         // Получаем объект WebApp Telegram
         let tg = window.Telegram.WebApp;
@@ -16,38 +16,17 @@
             // Получаем данные пользователя
             let user = tg.initDataUnsafe?.user;
 
-            // Если данные пользователя доступны, заполняем поле Telegram ID
+            // Если данные пользователя доступны
             if (user) {
-                document.getElementById('telegram_id').value = user.id;
+                // Выводим ID пользователя на экран
+                document.getElementById('user_id').innerText = `Ваш Telegram ID: ${user.id}`;
+            } else {
+                document.getElementById('user_id').innerText = "Не удалось получить Telegram ID.";
             }
         }
     </script>
 </head>
 <body>
-    <h1>Регистрация клиента</h1>
-    <form action="/submit" method="POST">
-        <label for="telegram_id">Telegram ID:</label>
-        <input type="text" id="telegram_id" name="telegram_id" readonly><br><br>
-
-        <label for="full_name">Полное имя:</label>
-        <input type="text" id="full_name" name="full_name" required><br><br>
-
-        <label for="phone_number">Номер телефона:</label>
-        <input type="tel" id="phone_number" name="phone_number" required><br><br>
-
-        <label for="pet_name">Имя животного:</label>
-        <input type="text" id="pet_name" name="pet_name" required><br><br>
-
-        <label for="pet_breed">Порода животного (опционально):</label>
-        <input type="text" id="pet_breed" name="pet_breed"><br><br>
-
-        <label for="pet_age">Возраст животного (опционально):</label>
-        <input type="number" id="pet_age" name="pet_age" min="0"><br><br>
-
-        <label for="contact_details">Дополнительные контактные данные:</label>
-        <textarea id="contact_details" name="contact_details"></textarea><br><br>
-
-        <button type="submit">Отправить</button>
-    </form>
+    <h1 id="user_id">Загрузка...</h1>
 </body>
 </html>
