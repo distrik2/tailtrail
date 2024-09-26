@@ -39,18 +39,41 @@
     </form>
 </body>
 <script>
-    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-    let iduser = document.getElementById("telegram_id");
-    // iduser[0].innerHTML = tg.initDataUnsafe.user.last_name;
+    let tg = window.Telegram.WebApp; // получаем объект WebApp Telegram
 
-    let usercard = document.getElementById("usercard"); //получаем блок usercard 
+    // Инициализируем WebApp
+    tg.ready();
 
-    let profName = document.createElement('p'); //создаем параграф
-    profName.innerText = `${tg.initDataUnsafe.user.first_name}
-    ${tg.initDataUnsafe.user.last_name}
-    ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
-    //выдем имя, "фамилию", через тире username и код языка
-    usercard.appendChild(profName); //добавляем 
+    // Пример использования API
+    // Устанавливаем цвет темы приложения
+    tg.MainButton.setParams({
+        text: "Отправить",
+        color: "#2cab37" // зелёный цвет
+    });
+
+    // Отображаем основную кнопку
+    tg.MainButton.show();
+
+    // Обработчик события при нажатии на кнопку
+    tg.MainButton.onClick(function () {
+        // Сбор данных с формы
+        let formData = {
+            telegram_id: document.getElementById('telegram_id').value,
+            full_name: document.getElementById('full_name').value,
+            phone_number: document.getElementById('phone_number').value,
+            pet_name: document.getElementById('pet_name').value,
+            pet_breed: document.getElementById('pet_breed').value || null,
+            pet_age: document.getElementById('pet_age').value || null,
+            contact_details: document.getElementById('contact_details').value || null
+        };
+
+        // Отправляем данные в родительское приложение Telegram
+        tg.sendData(JSON.stringify(formData));
+
+        // Закрыть WebApp после отправки
+        tg.close();
+    });
+
 
 
 </script>
