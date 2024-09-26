@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram WebApp User Info</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Telegram WebApp User ID</title>
     <script>
         // Получаем объект WebApp Telegram
         let tg = window.Telegram.WebApp;
@@ -12,16 +13,22 @@
         window.onload = function() {
             tg.ready(); // инициализируем WebApp
 
-            // Попробуем получить все данные из initDataUnsafe
-            let initData = tg.initDataUnsafe;
+            // Получаем данные пользователя
+            let user = tg.initDataUnsafe?.user;
+            let user2 = tg.initDataUnsafe.user.id;
 
-            // Выводим данные на экран для отладки
-            document.getElementById('user_info').innerText = JSON.stringify(initData, null, 2);
+            // Если данные пользователя доступны
+            if (user) {
+                // Выводим ID пользователя на экран
+                document.getElementById('user_id').innerText = `Ваш Telegram ID: ${user.id}`;
+                document.getElementById('user2_id').innerText = `Ваш Telegram ID: ${user2.id}`;
+            } else {
+                document.getElementById('user_id').innerText = "Не удалось получить Telegram ID.";
+            }
         }
     </script>
 </head>
 <body>
-    <h1>Информация о пользователе</h1>
-    <pre id="user_info">Загрузка...</pre>
+    <h1 id="user_id">Загрузка...</h1>
 </body>
 </html>
