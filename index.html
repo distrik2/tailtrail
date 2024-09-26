@@ -15,13 +15,11 @@
 
             // Получаем данные пользователя
             let user = tg.initDataUnsafe?.user;
-            let user2 = tg.initDataUnsafe.user.id;
 
             // Если данные пользователя доступны
             if (user) {
                 // Выводим ID пользователя на экран
                 document.getElementById('user_id').innerText = `Ваш Telegram ID: ${user.id}`;
-                document.getElementById('user2_id').innerText = `Ваш Telegram ID: ${user2.id}`;
             } else {
                 document.getElementById('user_id').innerText = "Не удалось получить Telegram ID.";
             }
