@@ -81,6 +81,7 @@
         <textarea id="contact_details" name="contact_details"></textarea><br><br>
 
         <button type="submit">Отправить</button>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     </form>
 </body>
 </html>
