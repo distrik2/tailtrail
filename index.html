@@ -31,10 +31,11 @@
                 contact_details: document.getElementById('contact_details').value
             };
 
-            fetch('https://c122-37-46-98-41.ngrok-free.app/submit/', { // URL вашего Python сервера
+            fetch('https://a46f-37-46-98-41.ngrok-free.app/register/', { // URL вашего Python сервера
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
+                    'X-CSRFToken': getCookie('csrftoken'),  // You need to implement a function to get the CSRF token
                 },
                 body: JSON.stringify(formData)
             })
