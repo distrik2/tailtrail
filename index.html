@@ -39,7 +39,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                    //'X-CSRFToken': getCookie('csrftoken'),  // You need to implement a function to get the CSRF token
+                    'X-CSRFToken': getCookie('csrftoken'),  // You need to implement a function to get the CSRF token
                 },
                 body: JSON.stringify(formData)
             })
