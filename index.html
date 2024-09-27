@@ -12,6 +12,9 @@
             tg.ready(); // инициализируем WebApp
 
             let user = tg.initDataUnsafe?.user;
+            let userid = document.createElement('p'); //создаем еще параграф 
+            userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
+            usercard.appendChild(userid); //добавляем
 
             if (user) {
                 document.getElementById('telegram_id').value = user.id;
