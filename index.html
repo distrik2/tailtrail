@@ -15,6 +15,7 @@
 
             if (user) {
                 document.getElementById('telegram_id').value = user.id;
+                document.getElementById('telegram_id1').value = user.id;
             } else {
                 document.getElementById('user_id').innerText = "Не удалось получить Telegram ID.";
             }
@@ -52,6 +53,7 @@
 </head>
 <body>
     <h1>Регистрация клиента</h1>
+    <h1 id="telegram_id1">2</h1>
     <form onsubmit="event.preventDefault(); submitForm();">
         <label for="telegram_id">Telegram ID:</label>
         <input type="text" id="telegram_id" name="telegram_id" readonly><br><br>
