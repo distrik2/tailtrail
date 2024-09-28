@@ -11,16 +11,10 @@
         window.onload = function() {
             tg.ready(); // инициализируем WebApp
 
-            // let user = tg.initDataUnsafe?.user;
+            let user = tg.initDataUnsafe?.user;
             
-            let userid = document.createElement('p'); //создаем еще параграф 
-            userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
-            usercard.appendChild(userid); //добавляем
-
-            let user = tg.initData.user?.id;
             if (user) {
                 document.getElementById('telegram_id').value = user.id;
-                document.getElementById('telegram_id1').value = user.id;
             } else {
                 document.getElementById('user_id').innerText = "Не удалось получить Telegram ID.";
             }
@@ -37,11 +31,11 @@
                 contact_details: document.getElementById('contact_details').value
             };
 
-            fetch('https://a46f-37-46-98-41.ngrok-free.app/register/', { // URL вашего Python сервера
+            fetch('', { // URL вашего Python сервера
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                    'X-CSRFToken': getCookie('csrftoken'),  // You need to implement a function to get the CSRF token
+                    // 'X-CSRFToken': getCookie('csrftoken'),  // You need to implement a function to get the CSRF token
                 },
                 body: JSON.stringify(formData)
             })
@@ -58,11 +52,10 @@
 </head>
 <body>
     <h1>Регистрация клиента</h1>
-    <h1 id="telegram_id1">2</h1>
     <form onsubmit="event.preventDefault(); submitForm();">
         <label for="telegram_id">Telegram ID:</label>
-        <input type="text" id="telegram_id" name="telegram_id" required><br><br>
-<!--         <input type="text" id="telegram_id" name="telegram_id" readonly><br><br> -->
+<!--         <input type="text" id="telegram_id" name="telegram_id" required><br><br> -->
+        <input type="text" id="telegram_id" name="telegram_id" readonly><br><br>
 
         <label for="full_name">Полное имя:</label>
         <input type="text" id="full_name" name="full_name" required><br><br>
